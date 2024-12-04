@@ -57,7 +57,8 @@ fn process_b(lines: Vec<String>) -> i32 {
         .into_iter()
         .map(|line| {
             line.split_whitespace()
-                .map(|s| s.parse::<i32>().ok())
+                .map(|s| s.parse::<i32>())
+                .filter_map(Result::ok)
                 .collect()
         })
         .collect();
